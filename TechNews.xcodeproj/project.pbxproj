@@ -12,6 +12,11 @@
 		BA29BDF61ECF7EA000AB0F6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA29BDF41ECF7EA000AB0F6F /* Main.storyboard */; };
 		BA29BDF81ECF7EA000AB0F6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA29BDF71ECF7EA000AB0F6F /* Assets.xcassets */; };
 		BA29BDFB1ECF7EA000AB0F6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA29BDF91ECF7EA000AB0F6F /* LaunchScreen.storyboard */; };
+		BA29BE031ECF802C00AB0F6F /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29BE021ECF802C00AB0F6F /* NewsModel.swift */; };
+		BA29BE051ECF8FAE00AB0F6F /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29BE041ECF8FAE00AB0F6F /* NewsAPI.swift */; };
+		BA29BE071ECF8FF200AB0F6F /* ConfidentialConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */; };
+		BA3C65F01ED1066A006C15C4 /* FrontPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */; };
+		BA3C65F21ED10B6D006C15C4 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		BA29BDF71ECF7EA000AB0F6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA29BDFA1ECF7EA000AB0F6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA29BDFC1ECF7EA000AB0F6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA29BE021ECF802C00AB0F6F /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		BA29BE041ECF8FAE00AB0F6F /* NewsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
+		BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfidentialConstants.swift; sourceTree = "<group>"; };
+		BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageController.swift; sourceTree = "<group>"; };
+		BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,11 @@
 			children = (
 				BA29BDF01ECF7EA000AB0F6F /* AppDelegate.swift */,
 				BA29BDF21ECF7EA000AB0F6F /* ViewController.swift */,
+				BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */,
+				BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */,
+				BA29BE021ECF802C00AB0F6F /* NewsModel.swift */,
+				BA29BE041ECF8FAE00AB0F6F /* NewsAPI.swift */,
+				BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */,
 				BA29BDF41ECF7EA000AB0F6F /* Main.storyboard */,
 				BA29BDF71ECF7EA000AB0F6F /* Assets.xcassets */,
 				BA29BDF91ECF7EA000AB0F6F /* LaunchScreen.storyboard */,
@@ -137,8 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA29BE071ECF8FF200AB0F6F /* ConfidentialConstants.swift in Sources */,
+				BA3C65F21ED10B6D006C15C4 /* WelcomeController.swift in Sources */,
+				BA29BE031ECF802C00AB0F6F /* NewsModel.swift in Sources */,
+				BA3C65F01ED1066A006C15C4 /* FrontPageController.swift in Sources */,
 				BA29BDF31ECF7EA000AB0F6F /* ViewController.swift in Sources */,
 				BA29BDF11ECF7EA000AB0F6F /* AppDelegate.swift in Sources */,
+				BA29BE051ECF8FAE00AB0F6F /* NewsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +322,7 @@
 				BA29BE011ECF7EA000AB0F6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
