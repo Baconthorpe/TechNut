@@ -17,6 +17,8 @@
 		BA29BE071ECF8FF200AB0F6F /* ConfidentialConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */; };
 		BA3C65F01ED1066A006C15C4 /* FrontPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */; };
 		BA3C65F21ED10B6D006C15C4 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */; };
+		BA3C65F41ED1300E006C15C4 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65F31ED1300E006C15C4 /* WebController.swift */; };
+		BA3C65F61ED241C0006C15C4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C65F51ED241C0006C15C4 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfidentialConstants.swift; sourceTree = "<group>"; };
 		BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageController.swift; sourceTree = "<group>"; };
 		BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		BA3C65F31ED1300E006C15C4 /* WebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		BA3C65F51ED241C0006C15C4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +72,10 @@
 				BA29BDF21ECF7EA000AB0F6F /* ViewController.swift */,
 				BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */,
 				BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */,
+				BA3C65F31ED1300E006C15C4 /* WebController.swift */,
 				BA29BE021ECF802C00AB0F6F /* NewsModel.swift */,
 				BA29BE041ECF8FAE00AB0F6F /* NewsAPI.swift */,
+				BA3C65F51ED241C0006C15C4 /* ImageCache.swift */,
 				BA29BE061ECF8FF200AB0F6F /* ConfidentialConstants.swift */,
 				BA29BDF41ECF7EA000AB0F6F /* Main.storyboard */,
 				BA29BDF71ECF7EA000AB0F6F /* Assets.xcassets */,
@@ -152,8 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3C65F41ED1300E006C15C4 /* WebController.swift in Sources */,
 				BA29BE071ECF8FF200AB0F6F /* ConfidentialConstants.swift in Sources */,
 				BA3C65F21ED10B6D006C15C4 /* WelcomeController.swift in Sources */,
+				BA3C65F61ED241C0006C15C4 /* ImageCache.swift in Sources */,
 				BA29BE031ECF802C00AB0F6F /* NewsModel.swift in Sources */,
 				BA3C65F01ED1066A006C15C4 /* FrontPageController.swift in Sources */,
 				BA29BDF31ECF7EA000AB0F6F /* ViewController.swift in Sources */,
