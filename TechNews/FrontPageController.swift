@@ -33,12 +33,17 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         let story = stories[indexPath.row]
         
         cell.loadImage(url: story.imageURL)
-        cell.sourceLabel.text = story.source
+        cell.sourceLabel.text = story.sourceNatural
         cell.headlineLabel.text = story.headline
         
         cell.delegate = self
+        cell.panelView.layer.cornerRadius = 5.0
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,7 +51,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 110
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -64,6 +69,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Life Cycle
     override func viewDidLoad() {
         stories = NewsStore.getSharedStoreStories()
+        view.backgroundColor = tnTeal
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +108,7 @@ class HeadlineCell: UITableViewCell {
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
+    @IBOutlet weak var panelView: UIView!
     
     // MARK: Image Loading Properties
     internal var currentImageURL = ""

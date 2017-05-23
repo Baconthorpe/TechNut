@@ -15,6 +15,12 @@ internal struct Story {
     public let storyURL: String
     public let imageURL: String
     public let timeOfPublication: Date
+    
+    public var sourceNatural: String {
+        get {
+            return source.replacingOccurrences(of: "-", with: " ")
+        }
+    }
 }
 
 internal class NewsStore {
