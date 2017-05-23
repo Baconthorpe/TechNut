@@ -8,13 +8,16 @@
 
 import UIKit
 
-class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeadlineCellDelegate {
     
     // MARK: UI Elements
     @IBOutlet weak var storyTable: UITableView!
     
     // MARK: Data
     var stories: [Story] = []
+    
+    // MARK: Selection
+    var selectedRow: Int?
     
     // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,6 +36,8 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.sourceLabel.text = story.source
         cell.headlineLabel.text = story.headline
         
+        cell.delegate = self
+        
         return UITableViewCell()
     }
     
@@ -44,9 +49,33 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         return 100
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    // MARK: Headline Cell
+    func tapOn(cell: HeadlineCell) {
+        guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
+        
+        selectedRow = indexPath.row
+        performSegue(withIdentifier: "frontPageToWeb", sender: self)
+    }
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         stories = NewsStore.getSharedStoreStories()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if NewsStore.needsRefresh {
+            NewsStore.updateSharedStore(completion: { (newStories) in
+                NewsStore.needsRefresh = false
+                OperationQueue.main.addOperation {
+                    self.stories = newStories
+                    self.storyTable.reloadData()
+                }
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,20 +89,49 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: Utility
     internal func urlForSelectedCell() -> String? {
-        guard let selectedIndexPath = storyTable.indexPathForSelectedRow else { return nil }
+        guard let presentSelectedRow = selectedRow else { return nil }
         
-        let selectedStory = stories[selectedIndexPath.row]
+        let selectedStory = stories[presentSelectedRow]
+        selectedRow = nil
         return selectedStory.storyURL
     }
 }
 
 class HeadlineCell: UITableViewCell {
+    // MARK: UI Elements
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
     
+    // MARK: Image Loading Properties
     internal var currentImageURL = ""
     
+    // MARK: User Interaction Properties
+    internal var delegate: HeadlineCellDelegate? {
+        get {
+            return privateDelegate
+        }
+        set(newDelegate) {
+            addTapRecognizer()
+            privateDelegate = newDelegate
+        }
+    }
+    private var privateDelegate: HeadlineCellDelegate?
+    
+    // MARK: User Interaction
+    func addTapRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        tapRecognizer.numberOfTapsRequired = 1
+        addGestureRecognizer(tapRecognizer)
+    }
+    
+    func tapped() {
+        if let presentDelegate = privateDelegate {
+            presentDelegate.tapOn(cell: self)
+        }
+    }
+    
+    // MARK: Image Loading
     internal func loadImage(url: String) {
         currentImageURL = url
         
@@ -82,28 +140,8 @@ class HeadlineCell: UITableViewCell {
             self.thumbnailView.image = image
         }
     }
-    
-//    internal func loadImage(url: String) {
-//        guard let verifiedURL = URL(string: url) else { return }
-//        
-//        currentImageURL = url
-//        
-//        let task = URLSession.shared.dataTask(with: verifiedURL) { (data, response, error) in
-//            guard error == nil else { print("ERROR: \(String(describing: error))"); return }
-//            
-//            if let response = response {
-//                print("RESPONSE: \(response)")
-//            }
-//            
-//            guard let data = data else { print("INVALID IMAGE DATA"); return }
-//            guard url == self.currentImageURL else { return }
-//            
-//            OperationQueue.main.addOperation {
-//                let image = UIImage(data: data)
-//                self.thumbnailView.image = image
-//            }
-//        }
-//        
-//        task.resume()
-//    }
+}
+
+protocol HeadlineCellDelegate {
+    func tapOn(cell: HeadlineCell)
 }

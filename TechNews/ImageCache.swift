@@ -9,9 +9,14 @@
 import UIKit
 
 class ImageCache {
+    // MARK: Static Properties
+    fileprivate static let sharedImageCache = ImageCache()
+    
+    // MARK: Instance Properties
     private var urlToImage: [String : UIImage] = [:]
     private static let defaultImage = UIImage()
     
+    // MARK: Image Retrieval and Storage
     internal static func getImage(from url: String, completion: @escaping (UIImage) -> ()) {
         if let cachedImage = sharedImageCache.urlToImage[url] {
             OperationQueue.main.addOperation {
@@ -46,5 +51,3 @@ class ImageCache {
         task.resume()
     }
 }
-
-fileprivate let sharedImageCache = ImageCache()

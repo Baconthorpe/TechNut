@@ -18,26 +18,29 @@ internal struct Story {
 }
 
 internal class NewsStore {
+    // MARK: Static Properties
+    internal static var needsRefresh = false
+    fileprivate static let sharedNewsStore = NewsStore()
+    fileprivate static let sourcesOfInterest = ["the-next-web",
+                                                "ars-technica",
+                                                "engadget",
+                                                "hacker-news",
+                                                "techcrunch",
+                                                "techradar",
+                                                "the-verge"]
+    
+    // MARK: Instance Properties
     internal var stories: [Story] = []
     
+    // MARK: Updating Data
     internal static func updateSharedStore(completion: @escaping ([Story]) -> ()) {
-        sharedNewsStore.variedUpdate(completion: completion)
+        sharedNewsStore.update(completion: completion)
     }
     
     internal static func getSharedStoreStories() -> [Story] {
         return sharedNewsStore.stories
     }
     
-    private func update(completion: @escaping ([Story]) -> ()) {
-        NewsAPIClient.sampleGet { json in
-            let articlesJSON = NewsAPIClient.articlesFrom(json: json)
-            let source = NewsAPIClient.sourceFrom(json: json)
-            let parsedStories = NewsAPIClient.storiesFrom(articlesJSON: articlesJSON, source: source)
-            self.stories = parsedStories
-            
-            completion(self.stories)
-        }
-    }
     
     private func retrieve(source: String, completion: @escaping ([Story]) -> ()) {
         NewsAPIClient.getStories(from: source) { (json, error) in
@@ -52,11 +55,11 @@ internal class NewsStore {
         }
     }
     
-    private func variedUpdate(completion: @escaping ([Story]) -> ()) {
-        let targetResponseCount = sourcesOfInterest.count
+    private func update(completion: @escaping ([Story]) -> ()) {
+        let targetResponseCount = NewsStore.sourcesOfInterest.count
         var responses = 0
         var collectedStories: [Story] = []
-        for sourceOfInterest in sourcesOfInterest {
+        for sourceOfInterest in NewsStore.sourcesOfInterest {
             retrieve(source: sourceOfInterest, completion: { (freshStories) in
                 collectedStories.append(contentsOf: freshStories)
                 
@@ -75,14 +78,6 @@ internal class NewsStore {
     }
 }
 
-fileprivate let sharedNewsStore = NewsStore()
-fileprivate let sourcesOfInterest = ["the-next-web",
-                                     "ars-technica",
-                                     "engadget",
-                                     "hacker-news",
-                                     "techcrunch",
-                                     "techradar",
-                                     "the-verge"]
 
 fileprivate extension NewsAPIClient {
     fileprivate static func storiesFrom(articlesJSON: [[String:Any]], source: String) -> [Story] {

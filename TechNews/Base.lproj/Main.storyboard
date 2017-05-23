@@ -23,11 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-kb-y5G">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="80" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNews" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="80" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNews" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg3-HJ-djD" id="8Qb-9e-OiT">
@@ -56,6 +56,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="KVs-ML-VPR" firstAttribute="top" secondItem="8Qb-9e-OiT" secondAttribute="top" constant="8" id="6vd-sa-6hQ"/>
                                                 <constraint firstItem="KVs-ML-VPR" firstAttribute="leading" secondItem="8Qb-9e-OiT" secondAttribute="leading" constant="8" id="D7P-aE-ndt"/>
@@ -69,6 +70,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="PEQ-Hc-Ovm" secondAttribute="trailing" constant="8" id="z3b-AD-nsg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="headlineLabel" destination="mSY-Ng-GAh" id="smV-g1-iMl"/>
                                             <outlet property="sourceLabel" destination="PEQ-Hc-Ovm" id="Bw6-E6-MCq"/>
@@ -107,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqo-II-STg">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -115,7 +117,7 @@
                         <constraints>
                             <constraint firstItem="wqo-II-STg" firstAttribute="leading" secondItem="QJe-Ee-sV2" secondAttribute="leading" id="0sV-fi-5p4"/>
                             <constraint firstItem="IJl-BX-2vD" firstAttribute="top" secondItem="wqo-II-STg" secondAttribute="bottom" id="3Kc-GX-xjo"/>
-                            <constraint firstItem="wqo-II-STg" firstAttribute="top" secondItem="kjj-7u-tKm" secondAttribute="bottom" id="TC8-7o-1vz"/>
+                            <constraint firstItem="wqo-II-STg" firstAttribute="top" secondItem="kjj-7u-tKm" secondAttribute="bottom" constant="-64" id="TC8-7o-1vz"/>
                             <constraint firstAttribute="trailing" secondItem="wqo-II-STg" secondAttribute="trailing" id="z9X-fU-Omx"/>
                         </constraints>
                     </view>

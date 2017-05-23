@@ -32,7 +32,7 @@ class WelcomeController: UIViewController {
     func dataGotten(success: Bool) {
         statusLabel.text = "Read all about it!"
         
-        UIView.animate(withDuration: 3.0, animations: { 
+        UIView.animate(withDuration: 2.0, animations: {
             self.statusLabel.alpha = 0.0
         }) { (completed) in
             self.statusLabel.alpha = 1.0
