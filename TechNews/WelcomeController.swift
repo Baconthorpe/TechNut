@@ -12,14 +12,24 @@ class WelcomeController: UIViewController {
     
     // MARK: UI Elements
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var topFlourishBar: UIView!
+    @IBOutlet weak var bottomFlourishBar: UIView!
+    
+    // MARK: UI Constraints
+    @IBOutlet weak var topFlourishHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomFlourishHeightConstraint: NSLayoutConstraint!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         getData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupFlourishBars()
+    }
+    
     // MARK: Automated Startup
-    func getData() {
+    private func getData() {
         statusLabel.text = "Retrieving the news..."
         
         NewsStore.updateSharedStore { (stories) in
@@ -29,18 +39,36 @@ class WelcomeController: UIViewController {
         }
     }
     
-    func dataGotten(success: Bool) {
+    private func dataGotten(success: Bool) {
         statusLabel.text = "Read all about it!"
         
-        UIView.animate(withDuration: 2.0, animations: {
-            self.statusLabel.alpha = 0.0
-        }) { (completed) in
-            self.statusLabel.alpha = 1.0
+        animateFlourish {
             self.goToFrontPage()
         }
     }
     
-    func goToFrontPage() {
+    private func goToFrontPage() {
         performSegue(withIdentifier: "welcomeToFrontPage", sender: self)
+    }
+    
+    // MARK: Flourish Animation
+    private func setupFlourishBars() {
+        topFlourishBar.backgroundColor = tnTeal
+        bottomFlourishBar.backgroundColor = tnTeal
+        
+        topFlourishHeightConstraint.constant = 5
+        bottomFlourishHeightConstraint.constant = 5
+    }
+    
+    private func animateFlourish(andThen completion: @escaping () -> ()) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { 
+            self.topFlourishHeightConstraint.constant = 600
+            self.bottomFlourishHeightConstraint.constant = 600
+            
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            completion()
+        }
     }
 }
