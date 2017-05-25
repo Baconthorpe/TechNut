@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TechNews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBZ-Lh-KqO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TechNut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBZ-Lh-KqO">
                                 <rect key="frame" x="16" y="308" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tpB-Ht-NAS"/>
@@ -30,11 +30,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News access courtesy of News API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTA-6y-yc4">
+                                <rect key="frame" x="16" y="630" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="e0P-8D-4y4"/>
+                                    <constraint firstAttribute="height" constant="21" id="gOK-tM-5Y2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HBZ-Lh-KqO" secondAttribute="trailing" constant="16" id="Lxl-yo-ET5"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="UTA-6y-yc4" secondAttribute="bottom" constant="16" id="VEm-Ya-WKK"/>
                             <constraint firstItem="HBZ-Lh-KqO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="X6M-cr-BCA"/>
+                            <constraint firstItem="UTA-6y-yc4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="16" id="ZvM-Sc-SwB"/>
+                            <constraint firstAttribute="trailing" secondItem="UTA-6y-yc4" secondAttribute="trailing" constant="16" id="mfi-q9-vG2"/>
                             <constraint firstItem="HBZ-Lh-KqO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="16" id="xTl-RJ-4Ic"/>
                         </constraints>
                     </view>

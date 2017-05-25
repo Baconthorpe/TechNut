@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TechNews-->
+        <!--TechNut-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FrontPageController" customModule="TechNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FrontPageController" customModule="TechNut" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="120" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNews" customModuleProvider="target">
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="120" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNut" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg3-HJ-djD" id="8Qb-9e-OiT">
@@ -47,13 +47,13 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-hg-eby">
                                                             <rect key="frame" x="10" y="81" width="100" height="19"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Zx-cgG">
                                                             <rect key="frame" x="124.5" y="10" width="220.5" height="90"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -101,7 +101,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.73448076350000002" green="1" blue="0.41212951479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TechNews" id="53D-CP-WPG"/>
+                    <navigationItem key="navigationItem" title="TechNut" id="53D-CP-WPG"/>
                     <connections>
                         <outlet property="storyTable" destination="JT1-kb-y5G" id="cp4-6A-gfL"/>
                         <segue destination="MZ3-pt-gDE" kind="show" identifier="frontPageToWeb" id="HyJ-eu-uP9"/>
@@ -114,7 +114,7 @@
         <!--Web Controller-->
         <scene sceneID="FnV-tV-7ua">
             <objects>
-                <viewController id="MZ3-pt-gDE" customClass="WebController" customModule="TechNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MZ3-pt-gDE" customClass="WebController" customModule="TechNut" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kjj-7u-tKm"/>
                         <viewControllerLayoutGuide type="bottom" id="IJl-BX-2vD"/>
@@ -147,7 +147,7 @@
         <!--Welcome Controller-->
         <scene sceneID="gOs-P0-nfX">
             <objects>
-                <viewController id="dyE-wI-Gcd" customClass="WelcomeController" customModule="TechNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dyE-wI-Gcd" customClass="WelcomeController" customModule="TechNut" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vbk-vD-IhN"/>
                         <viewControllerLayoutGuide type="bottom" id="cLZ-LM-B9o"/>
@@ -156,12 +156,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TechNews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q05-jZ-ElM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TechNut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q05-jZ-ElM">
                                 <rect key="frame" x="16" y="308.5" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NTc-ad-XHf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -170,7 +170,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FXU-zC-2U8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -188,20 +188,32 @@
                                     <constraint firstAttribute="height" constant="5" id="Jdn-Ml-eZe"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News access courtesy of News API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXb-qr-lLd">
+                                <rect key="frame" x="16" y="630" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fzj-0v-Xcr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cLZ-LM-B9o" firstAttribute="top" secondItem="qXb-qr-lLd" secondAttribute="bottom" constant="16" id="0jD-6o-Ju8"/>
                             <constraint firstItem="Q05-jZ-ElM" firstAttribute="leading" secondItem="8SD-BE-M6i" secondAttribute="leading" constant="16" id="4se-Fi-4xb"/>
                             <constraint firstItem="mbj-aM-2Ew" firstAttribute="leading" secondItem="8SD-BE-M6i" secondAttribute="leading" id="Cfn-Id-xWg"/>
                             <constraint firstItem="Q05-jZ-ElM" firstAttribute="top" secondItem="bUQ-cx-8QA" secondAttribute="bottom" constant="5" id="Puv-ct-wQ5"/>
                             <constraint firstAttribute="trailing" secondItem="mbj-aM-2Ew" secondAttribute="trailing" id="QdT-aR-IzE"/>
                             <constraint firstAttribute="trailing" secondItem="bUQ-cx-8QA" secondAttribute="trailing" id="aLP-Xt-31h"/>
+                            <constraint firstAttribute="trailing" secondItem="qXb-qr-lLd" secondAttribute="trailing" constant="16" id="aqh-26-12h"/>
                             <constraint firstItem="mbj-aM-2Ew" firstAttribute="top" secondItem="Tl5-vD-63R" secondAttribute="bottom" constant="5" id="beu-qv-feF"/>
                             <constraint firstAttribute="trailing" secondItem="Tl5-vD-63R" secondAttribute="trailing" constant="16" id="bm6-Ch-wNc"/>
                             <constraint firstAttribute="trailing" secondItem="Q05-jZ-ElM" secondAttribute="trailing" constant="16" id="eTD-Ul-bqr"/>
                             <constraint firstItem="Q05-jZ-ElM" firstAttribute="centerY" secondItem="8SD-BE-M6i" secondAttribute="centerY" id="fED-qf-Gqu"/>
                             <constraint firstItem="Tl5-vD-63R" firstAttribute="leading" secondItem="8SD-BE-M6i" secondAttribute="leading" constant="16" id="gI5-5f-QO1"/>
                             <constraint firstItem="bUQ-cx-8QA" firstAttribute="leading" secondItem="8SD-BE-M6i" secondAttribute="leading" id="o5R-N0-VX9"/>
+                            <constraint firstItem="qXb-qr-lLd" firstAttribute="leading" secondItem="8SD-BE-M6i" secondAttribute="leading" constant="16" id="tEb-s7-eV3"/>
                             <constraint firstItem="Tl5-vD-63R" firstAttribute="top" secondItem="Q05-jZ-ElM" secondAttribute="bottom" constant="8" id="un5-jj-5Nf"/>
                         </constraints>
                     </view>

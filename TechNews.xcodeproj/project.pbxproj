@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		BA07562F1ED4C2A100CE0D9C /* TechNewsStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechNewsStyle.swift; sourceTree = "<group>"; };
-		BA29BDED1ECF7EA000AB0F6F /* TechNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA29BDED1ECF7EA000AB0F6F /* TechNut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechNut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA29BDF01ECF7EA000AB0F6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA29BDF21ECF7EA000AB0F6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA29BDF51ECF7EA000AB0F6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		BA29BDEE1ECF7EA000AB0F6F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA29BDED1ECF7EA000AB0F6F /* TechNews.app */,
+				BA29BDED1ECF7EA000AB0F6F /* TechNut.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,9 +91,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA29BDEC1ECF7EA000AB0F6F /* TechNews */ = {
+		BA29BDEC1ECF7EA000AB0F6F /* TechNut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA29BDFF1ECF7EA000AB0F6F /* Build configuration list for PBXNativeTarget "TechNews" */;
+			buildConfigurationList = BA29BDFF1ECF7EA000AB0F6F /* Build configuration list for PBXNativeTarget "TechNut" */;
 			buildPhases = (
 				BA29BDE91ECF7EA000AB0F6F /* Sources */,
 				BA29BDEA1ECF7EA000AB0F6F /* Frameworks */,
@@ -103,9 +103,9 @@
 			);
 			dependencies = (
 			);
-			name = TechNews;
+			name = TechNut;
 			productName = TechNews;
-			productReference = BA29BDED1ECF7EA000AB0F6F /* TechNews.app */;
+			productReference = BA29BDED1ECF7EA000AB0F6F /* TechNut.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA29BDEC1ECF7EA000AB0F6F /* TechNews */,
+				BA29BDEC1ECF7EA000AB0F6F /* TechNut */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 				INFOPLIST_FILE = TechNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ZA.TechNews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technut.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -311,7 +311,7 @@
 				INFOPLIST_FILE = TechNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ZA.TechNews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technut.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -329,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA29BDFF1ECF7EA000AB0F6F /* Build configuration list for PBXNativeTarget "TechNews" */ = {
+		BA29BDFF1ECF7EA000AB0F6F /* Build configuration list for PBXNativeTarget "TechNut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA29BE001ECF7EA000AB0F6F /* Debug */,
