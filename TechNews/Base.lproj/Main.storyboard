@@ -23,9 +23,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-kb-y5G">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-kb-y5G">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -100,6 +99,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.73448076350000002" green="1" blue="0.41212951479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="JT1-kb-y5G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9gi-Ng-OG0"/>
+                            <constraint firstItem="JT1-kb-y5G" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ao8-a6-OrA"/>
+                            <constraint firstAttribute="bottom" secondItem="JT1-kb-y5G" secondAttribute="bottom" id="QkT-Rg-fgh"/>
+                            <constraint firstAttribute="trailing" secondItem="JT1-kb-y5G" secondAttribute="trailing" id="uCP-w7-5OQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TechNut" id="53D-CP-WPG"/>
                     <connections>
