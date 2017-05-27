@@ -66,6 +66,13 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegue(withIdentifier: "frontPageToWeb", sender: self)
     }
     
+    func moreOptionsRequested(cell: HeadlineCell) {
+        guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
+        guard let url = urlForCell(at: indexPath.row) else { return }
+        
+        displayMoreOptions(for: url)
+    }
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         stories = NewsStore.getSharedStoreStories()
@@ -87,19 +94,44 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "frontPageToWeb" {
             guard let webVC = segue.destination as? WebController else { return }
+            guard let presentSelectedRow = selectedRow else { return }
             
-            let storyURL = urlForSelectedCell()
+            let storyURL = urlForCell(at: presentSelectedRow)
             webVC.url = storyURL
         }
     }
     
     // MARK: Utility
-    internal func urlForSelectedCell() -> String? {
-        guard let presentSelectedRow = selectedRow else { return nil }
-        
-        let selectedStory = stories[presentSelectedRow]
+    internal func urlForCell(at row: Int) -> String? {
+        let selectedStory = stories[row]
         selectedRow = nil
         return selectedStory.storyURL
+    }
+    
+    // MARK: More Options
+    internal func displayMoreOptions(for url: String) {        
+        let actionSheet = UIAlertController(title: nil, message: "Open this article via", preferredStyle: .actionSheet)
+        let openInBrowserAction = UIAlertAction(title: "Safari", style: .default) { (alertAction) in
+            self.openBrowser(url: url)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(openInBrowserAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    internal func openBrowser(url: String) {
+        guard let validURL = URL(string: url) else { return }
+        
+        UIApplication.shared.open(validURL, options: [:]) { (success) in
+            if success {
+                print("Successfully opened URL: \(validURL)")
+            } else {
+                print("Failed to open URL: \(validURL)")
+            }
+        }
     }
 }
 
@@ -109,6 +141,13 @@ class HeadlineCell: UITableViewCell {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var panelView: UIView!
+    
+    // MARK: UI Actions
+    @IBAction func moreOptionsTapped(_ sender: Any) {
+        if let presentDelegate = privateDelegate {
+            presentDelegate.moreOptionsRequested(cell: self)
+        }
+    }
     
     // MARK: Image Loading Properties
     internal var currentImageURL = ""
@@ -151,4 +190,5 @@ class HeadlineCell: UITableViewCell {
 
 protocol HeadlineCellDelegate {
     func tapOn(cell: HeadlineCell)
+    func moreOptionsRequested(cell: HeadlineCell)
 }

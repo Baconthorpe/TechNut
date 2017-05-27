@@ -51,25 +51,38 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Zx-cgG">
-                                                            <rect key="frame" x="124.5" y="10" width="220.5" height="90"/>
+                                                            <rect key="frame" x="125" y="10" width="197" height="90"/>
                                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We9-sn-p4m">
+                                                            <rect key="frame" x="327" y="10" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="CTq-yr-cgO"/>
+                                                                <constraint firstAttribute="height" constant="25" id="JV8-UA-YBY"/>
+                                                            </constraints>
+                                                            <state key="normal" image="more_options_icon-1"/>
+                                                            <connections>
+                                                                <action selector="moreOptionsTapped:" destination="Hg3-HJ-djD" eventType="touchUpInside" id="rP4-7F-CrJ"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="0.99922511479999998" blue="0.97948343770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="yLL-Zx-cgG" secondAttribute="trailing" constant="10" id="83g-gL-QNI"/>
                                                         <constraint firstItem="yLL-Zx-cgG" firstAttribute="top" secondItem="bO1-EK-mEx" secondAttribute="top" constant="10" id="A39-vk-Nas"/>
                                                         <constraint firstItem="yLL-Zx-cgG" firstAttribute="leading" secondItem="Djt-hg-eby" secondAttribute="trailing" constant="15" id="AeR-g6-SpY"/>
                                                         <constraint firstItem="Djt-hg-eby" firstAttribute="width" secondItem="pud-dx-s9i" secondAttribute="width" id="FZI-2E-w9v"/>
                                                         <constraint firstItem="pud-dx-s9i" firstAttribute="leading" secondItem="bO1-EK-mEx" secondAttribute="leading" constant="10" id="GXl-ZY-Nsq"/>
                                                         <constraint firstItem="pud-dx-s9i" firstAttribute="top" secondItem="bO1-EK-mEx" secondAttribute="top" constant="10" id="J5W-eG-ZQj"/>
                                                         <constraint firstAttribute="bottom" secondItem="yLL-Zx-cgG" secondAttribute="bottom" constant="10" id="LVM-KO-mpD"/>
+                                                        <constraint firstItem="We9-sn-p4m" firstAttribute="top" secondItem="bO1-EK-mEx" secondAttribute="top" constant="10" id="TH5-7a-0uA"/>
                                                         <constraint firstItem="pud-dx-s9i" firstAttribute="height" secondItem="bO1-EK-mEx" secondAttribute="height" multiplier="0.6" id="TXb-Ae-5yK"/>
                                                         <constraint firstItem="Djt-hg-eby" firstAttribute="top" secondItem="pud-dx-s9i" secondAttribute="bottom" constant="5" id="iGJ-I3-acy"/>
                                                         <constraint firstAttribute="bottom" secondItem="Djt-hg-eby" secondAttribute="bottom" constant="10" id="lmR-Sh-f2u"/>
+                                                        <constraint firstItem="We9-sn-p4m" firstAttribute="leading" secondItem="yLL-Zx-cgG" secondAttribute="trailing" constant="5" id="nEC-jt-Eiw"/>
                                                         <constraint firstItem="Djt-hg-eby" firstAttribute="leading" secondItem="bO1-EK-mEx" secondAttribute="leading" constant="10" id="o4k-Tc-UkK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="We9-sn-p4m" secondAttribute="trailing" constant="3" id="y3j-Jz-zTr"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -263,4 +276,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="more_options_icon-1" width="30" height="30"/>
+    </resources>
 </document>
