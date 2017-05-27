@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqo-II-STg">
-                                <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -137,10 +137,17 @@
                         <constraints>
                             <constraint firstItem="wqo-II-STg" firstAttribute="leading" secondItem="QJe-Ee-sV2" secondAttribute="leading" id="0sV-fi-5p4"/>
                             <constraint firstItem="IJl-BX-2vD" firstAttribute="top" secondItem="wqo-II-STg" secondAttribute="bottom" id="3Kc-GX-xjo"/>
-                            <constraint firstItem="wqo-II-STg" firstAttribute="top" secondItem="kjj-7u-tKm" secondAttribute="bottom" constant="-64" id="TC8-7o-1vz"/>
+                            <constraint firstItem="wqo-II-STg" firstAttribute="top" secondItem="kjj-7u-tKm" secondAttribute="bottom" id="TC8-7o-1vz"/>
                             <constraint firstAttribute="trailing" secondItem="wqo-II-STg" secondAttribute="trailing" id="z9X-fU-Omx"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Wst-RF-MGd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="30k-zP-m5l">
+                            <connections>
+                                <action selector="openInBrowserTapped:" destination="MZ3-pt-gDE" id="kOU-BS-Vtn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="wqo-II-STg" id="JiA-rg-5Wt"/>
                     </connections>
