@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BA0756301ED4C2A100CE0D9C /* TechNewsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA07562F1ED4C2A100CE0D9C /* TechNewsStyle.swift */; };
+		BA28305A1EE36C5900F626EA /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2830591EE36C5900F626EA /* PreferencesController.swift */; };
+		BA28305C1EE36C9000F626EA /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28305B1EE36C9000F626EA /* Preferences.swift */; };
 		BA29BDF11ECF7EA000AB0F6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29BDF01ECF7EA000AB0F6F /* AppDelegate.swift */; };
 		BA29BDF61ECF7EA000AB0F6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA29BDF41ECF7EA000AB0F6F /* Main.storyboard */; };
 		BA29BDF81ECF7EA000AB0F6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA29BDF71ECF7EA000AB0F6F /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		BA07562F1ED4C2A100CE0D9C /* TechNewsStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechNewsStyle.swift; sourceTree = "<group>"; };
+		BA2830591EE36C5900F626EA /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		BA28305B1EE36C9000F626EA /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BA29BDED1ECF7EA000AB0F6F /* TechNut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechNut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA29BDF01ECF7EA000AB0F6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA29BDF51ECF7EA000AB0F6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			children = (
 				BA29BE041ECF8FAE00AB0F6F /* NewsAPI.swift */,
 				BA29BE021ECF802C00AB0F6F /* NewsModel.swift */,
+				BA28305B1EE36C9000F626EA /* Preferences.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -73,6 +78,7 @@
 				BA3C65F11ED10B6D006C15C4 /* WelcomeController.swift */,
 				BA3C65EF1ED1066A006C15C4 /* FrontPageController.swift */,
 				BA3C65F31ED1300E006C15C4 /* WebController.swift */,
+				BA2830591EE36C5900F626EA /* PreferencesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				BA3C65F61ED241C0006C15C4 /* ImageCache.swift in Sources */,
 				BA29BE031ECF802C00AB0F6F /* NewsModel.swift in Sources */,
 				BA3C65F01ED1066A006C15C4 /* FrontPageController.swift in Sources */,
+				BA28305A1EE36C5900F626EA /* PreferencesController.swift in Sources */,
+				BA28305C1EE36C9000F626EA /* Preferences.swift in Sources */,
 				BA0756301ED4C2A100CE0D9C /* TechNewsStyle.swift in Sources */,
 				BA29BDF11ECF7EA000AB0F6F /* AppDelegate.swift in Sources */,
 				BA29BE051ECF8FAE00AB0F6F /* NewsAPI.swift in Sources */,

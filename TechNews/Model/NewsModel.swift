@@ -27,13 +27,6 @@ internal class NewsStore {
     // MARK: Static Properties
     internal static var needsRefresh = false
     fileprivate static let sharedNewsStore = NewsStore()
-    fileprivate static let sourcesOfInterest = ["the-next-web",
-                                                "ars-technica",
-                                                "engadget",
-                                                "hacker-news",
-                                                "techcrunch",
-                                                "techradar",
-                                                "the-verge"]
     
     // MARK: Instance Properties
     internal var stories: [Story] = []
@@ -62,10 +55,11 @@ internal class NewsStore {
     }
     
     private func update(completion: @escaping ([Story]) -> ()) {
-        let targetResponseCount = NewsStore.sourcesOfInterest.count
+        let sourcesOfInterest = Preferences.sourcesThatAreOn()
+        let targetResponseCount = sourcesOfInterest.count
         var responses = 0
         var collectedStories: [Story] = []
-        for sourceOfInterest in NewsStore.sourcesOfInterest {
+        for sourceOfInterest in sourcesOfInterest {
             retrieve(source: sourceOfInterest, completion: { (freshStories) in
                 collectedStories.append(contentsOf: freshStories)
                 
