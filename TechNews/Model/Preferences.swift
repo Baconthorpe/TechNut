@@ -21,7 +21,7 @@ class Preferences {
                                          "the-verge" : true]
     
     // MARK: Instance Properties
-    private var sources: [String : Bool] = defaultSources
+    private lazy var sources: [String : Bool] = self.getStoredSources()
     
     // MARK: Static Methods
     internal static func saveSources() {
@@ -63,17 +63,21 @@ class Preferences {
     }
     
     private func loadSources() {
+        sources = getStoredSources()
+    }
+    
+    private func getStoredSources() -> [String : Bool] {
         // First, we load the data
         let loadedObject = UserDefaults.standard.object(forKey: Preferences.sourcesKey)
         
         if loadedObject == nil {
             // There is no saved source preference data
-            return
+            return Preferences.defaultSources
         }
         
-        guard let loadedDictionary = loadedObject as? [String : Bool] else { return }
+        guard let loadedDictionary = loadedObject as? [String : Bool] else { return  Preferences.defaultSources }
         
         // There is saved source data and it is in the proper format
-        sources = loadedDictionary
+        return loadedDictionary
     }
 }
