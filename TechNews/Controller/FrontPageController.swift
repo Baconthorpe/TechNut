@@ -53,10 +53,6 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.backgroundColor = UIColor.clear
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "frontPageToWeb", sender: self)
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
@@ -68,9 +64,9 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Headline Cell
     func tapOn(cell: HeadlineCell) {
         guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
+        guard let url = urlForCell(at: indexPath.row) else { return }
         
-        selectedRow = indexPath.row
-        performSegue(withIdentifier: "frontPageToWeb", sender: self)
+        openBrowser(url: url)
     }
     
     func moreOptionsRequested(cell: HeadlineCell) {
