@@ -19,6 +19,9 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Selection
     var selectedRow: Int?
     
+    // MARK: UI Bug Patch
+    var allCells: [HeadlineCell] = []
+    
     // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,6 +41,10 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.delegate = self
         cell.panelView.layer.cornerRadius = 5.0
+        
+        if !allCells.contains(cell) {
+            allCells.append(cell)
+        }
         
         return UITableViewCell()
     }
@@ -81,13 +88,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         if NewsStore.needsRefresh {
-            NewsStore.updateSharedStore(completion: { (newStories) in
-                NewsStore.needsRefresh = false
-                OperationQueue.main.addOperation {
-                    self.stories = newStories
-                    self.storyTable.reloadData()
-                }
-            })
+            refreshStoryTable()
         }
     }
     
@@ -106,6 +107,29 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         let selectedStory = stories[row]
         selectedRow = nil
         return selectedStory.storyURL
+    }
+    
+    internal func refreshStoryTable() {
+        NewsStore.updateSharedStore(completion: { (newStories) in
+            NewsStore.needsRefresh = false
+            OperationQueue.main.addOperation {
+                self.stories = newStories
+                self.clearExistingCells()
+                self.storyTable.reloadData()
+            }
+        })
+    }
+    
+    // MARK: UI Bug Patch
+    /* For some reason, when the table view reloads, it's not reusing old cells,
+     Until there's a better fix for this problem, the solution now is to manually
+     clear all old cells so that the only ones in use are the new ones the table
+     view creates. */
+    internal func clearExistingCells() {
+        for eachCell in allCells {
+            eachCell.removeFromSuperview()
+        }
+        allCells.removeAll()
     }
     
     // MARK: More Options
@@ -185,6 +209,14 @@ class HeadlineCell: UITableViewCell {
             guard self.currentImageURL == url else { return }
             self.thumbnailView.image = image
         }
+    }
+    
+    // MARK: Debugging
+    var section: Int?
+    var row: Int?
+    
+    internal func report() {
+        print("CELL REPORT: \(section!):\(row!) \(sourceLabel.text!) - \(headlineLabel.text!)")
     }
 }
 
