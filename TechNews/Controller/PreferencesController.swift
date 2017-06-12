@@ -34,8 +34,13 @@ class PreferencesController: UIViewController, UITableViewDelegate, UITableViewD
         cell.delegate = self
         cell.nameLabel.text = source
         cell.sourceSwitch.setOn(status, animated: false)
+        cell.panelView.layer.cornerRadius = 5.0
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     // MARK: Source Cell
@@ -59,6 +64,7 @@ class SourceCell: UITableViewCell {
     // MARK: UI Elements
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sourceSwitch: UISwitch!
+    @IBOutlet weak var panelView: UIView!
     
     //MARK: Delegate
     internal var delegate: SourceCellDelegate?
