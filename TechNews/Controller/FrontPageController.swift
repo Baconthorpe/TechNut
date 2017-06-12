@@ -8,42 +8,47 @@
 
 import UIKit
 
-class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeadlineCellDelegate {
+class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeadlineCellDelegate, SearchCellDelegate {
     
     // MARK: UI Elements
     @IBOutlet weak var storyTable: UITableView!
     
     // MARK: Data
-    var stories: [Story] = []
+    private var allStories: [Story] = []
+    var stories: [Story] {
+        get {
+            return allStories
+        }
+        set(newStories) {
+            allStories = newStories
+            filteredStories = allStories
+        }
+    }
+    var filteredStories: [Story] = []
     
     // MARK: Selection
     var selectedRow: Int?
     
-    // MARK: UI Bug Patch
-    var allCells: [HeadlineCell] = []
-    
     // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stories.count
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return filteredStories.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "headlineCell", for: indexPath) as? HeadlineCell else { return UITableViewCell() }
-        let story = stories[indexPath.row]
-        
-        cell.loadImage(url: story.imageURL)
-        cell.sourceLabel.text = story.sourceNatural
-        cell.headlineLabel.text = story.headline
-        
-        cell.delegate = self
-        cell.panelView.layer.cornerRadius = 5.0
-        
-        if !allCells.contains(cell) {
-            allCells.append(cell)
+        if indexPath.section == 0 {
+            return searchCellFor(tableView: tableView, indexPath: indexPath)
+        } else if indexPath.section == 1 {
+            return headlineCellFor(tableView: tableView, indexPath: indexPath)
         }
         
         return UITableViewCell()
@@ -54,11 +59,36 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 80
+        } else if indexPath.section == 1 {
+            return 110
+        }
+        
         return 110
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    // MARK: Search Cell
+    func newSearch(cell: SearchCell, query: String) {
+        let lowercaseQuery = query.lowercased()
+        
+        filteredStories = stories.filter { (story) -> Bool in
+            let inHeadline = story.headline.lowercased().contains(lowercaseQuery)
+            let inBlurb = story.blurb.lowercased().contains(lowercaseQuery)
+            let inSource = story.sourceNatural.lowercased().contains(lowercaseQuery)
+            return inHeadline || inBlurb || inSource
+        }
+        
+        storyTable.reloadSections(IndexSet(integer: 1), with: .none)
+    }
+    
+    func searchCleared(cell: SearchCell) {
+        filteredStories = stories
+        storyTable.reloadSections(IndexSet(integer: 1), with: .none)
     }
     
     // MARK: Headline Cell
@@ -110,22 +140,31 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
             NewsStore.needsRefresh = false
             OperationQueue.main.addOperation {
                 self.stories = newStories
-                self.clearExistingCells()
                 self.storyTable.reloadData()
             }
         })
     }
     
-    // MARK: UI Bug Patch
-    /* For some reason, when the table view reloads, it's not reusing old cells,
-     Until there's a better fix for this problem, the solution now is to manually
-     clear all old cells so that the only ones in use are the new ones the table
-     view creates. */
-    internal func clearExistingCells() {
-        for eachCell in allCells {
-            eachCell.removeFromSuperview()
-        }
-        allCells.removeAll()
+    internal func searchCellFor(tableView: UITableView, indexPath: IndexPath) -> SearchCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchCell else { return SearchCell() }
+        
+        cell.delegate = self
+        
+        return cell
+    }
+    
+    internal func headlineCellFor(tableView: UITableView, indexPath: IndexPath) -> HeadlineCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "headlineCell", for: indexPath) as? HeadlineCell else { return HeadlineCell() }
+        let story = filteredStories[indexPath.row]
+        
+        cell.loadImage(url: story.imageURL)
+        cell.sourceLabel.text = story.sourceNatural
+        cell.headlineLabel.text = story.headline
+        
+        cell.delegate = self
+        cell.panelView.layer.cornerRadius = 5.0
+        
+        return cell
     }
     
     // MARK: More Options
@@ -219,4 +258,29 @@ class HeadlineCell: UITableViewCell {
 protocol HeadlineCellDelegate {
     func tapOn(cell: HeadlineCell)
     func moreOptionsRequested(cell: HeadlineCell)
+}
+
+class SearchCell : UITableViewCell, UISearchBarDelegate {
+    // MARK: UI Elements
+    @IBOutlet weak var headlineSearchBar: UISearchBar!
+    
+    // MARK: User Interaction
+    internal var delegate: SearchCellDelegate?
+    
+    // MARK: Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let presentDelegate = delegate else { return }
+        guard let presentText = searchBar.text else { return }
+        
+        if searchBar.text == "" {
+            presentDelegate.searchCleared(cell: self)
+        } else {
+            presentDelegate.newSearch(cell: self, query: presentText)
+        }
+    }
+}
+
+protocol SearchCellDelegate {
+    func newSearch(cell: SearchCell, query: String)
+    func searchCleared(cell: SearchCell)
 }

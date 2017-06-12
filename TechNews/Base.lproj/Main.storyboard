@@ -28,8 +28,38 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="60" id="TW6-Eu-ED5" customClass="SearchCell" customModule="TechNut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TW6-Eu-ED5" id="GdN-wC-dzL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <searchBar opaque="NO" contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-W3-VBY">
+                                                    <rect key="frame" x="8" y="8" width="359" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="pFN-Oh-dMz"/>
+                                                    </constraints>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="TW6-Eu-ED5" id="87E-rO-5ez"/>
+                                                    </connections>
+                                                </searchBar>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="LZ4-W3-VBY" secondAttribute="trailing" constant="8" id="5GI-Yo-n0C"/>
+                                                <constraint firstItem="LZ4-W3-VBY" firstAttribute="centerY" secondItem="GdN-wC-dzL" secondAttribute="centerY" id="6K6-wd-8ng"/>
+                                                <constraint firstItem="LZ4-W3-VBY" firstAttribute="leading" secondItem="GdN-wC-dzL" secondAttribute="leading" constant="8" id="WIe-DO-UP4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="headlineSearchBar" destination="LZ4-W3-VBY" id="2dC-u7-b1x"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="120" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg3-HJ-djD" id="8Qb-9e-OiT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
