@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeadlineCellDelegate, SearchCellDelegate {
     
@@ -169,13 +170,17 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: More Options
     internal func displayMoreOptions(for url: String) {        
-        let actionSheet = UIAlertController(title: nil, message: "Open this article via", preferredStyle: .actionSheet)
-        let openInBrowserAction = UIAlertAction(title: "Safari", style: .default) { (alertAction) in
-            self.openBrowser(url: url)
+        let actionSheet = UIAlertController(title: nil, message: "Share this article on", preferredStyle: .actionSheet)
+        let shareToFacebookAction = UIAlertAction(title: "Facebook", style: .default) { (alertAction) in
+            self.shareToFacebook(url: url)
+        }
+        let shareToTwitterAction = UIAlertAction(title: "Twitter", style: .default) { (alertAction) in
+            self.shareToTwitter(url: url)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        actionSheet.addAction(openInBrowserAction)
+        actionSheet.addAction(shareToFacebookAction)
+        actionSheet.addAction(shareToTwitterAction)
         actionSheet.addAction(cancelAction)
         
         present(actionSheet, animated: true, completion: nil)
@@ -191,6 +196,24 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
                 print("Failed to open URL: \(validURL)")
             }
         }
+    }
+    
+    internal func shareToFacebook(url: String) {
+        guard let validURL = URL(string: url) else { return }
+        
+        let socialController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        socialController.add(validURL)
+        socialController.setInitialText("Via TechNut: ")
+        present(socialController, animated: true) { }
+    }
+    
+    internal func shareToTwitter(url: String) {
+        guard let validURL = URL(string: url) else { return }
+        
+        let socialController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        socialController.add(validURL)
+        socialController.setInitialText("Via TechNut: ")
+        present(socialController, animated: true) { }
     }
 }
 
