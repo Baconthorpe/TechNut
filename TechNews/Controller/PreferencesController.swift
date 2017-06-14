@@ -35,11 +35,23 @@ class PreferencesController: UIViewController, UITableViewDelegate, UITableViewD
         cell.nameLabel.text = source
         cell.sourceSwitch.setOn(status, animated: false)
         cell.panelView.layer.cornerRadius = 5.0
+        cell.sourceSwitch.tintColor = tnTeal
+        cell.sourceSwitch.onTintColor = tnTeal
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableCell(withIdentifier: "sourcesHeaderCell") else { return nil }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
     
@@ -55,6 +67,10 @@ class PreferencesController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: Life Cycle
+    override func viewDidLoad() {
+        view.backgroundColor = tnTeal
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         Preferences.saveSources()
     }

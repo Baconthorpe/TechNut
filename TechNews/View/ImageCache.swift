@@ -14,7 +14,7 @@ class ImageCache {
     
     // MARK: Instance Properties
     private var urlToImage: [String : UIImage] = [:]
-    private static let defaultImage = UIImage()
+    private static let defaultImage = UIImage(named: "default_thumbnail-1") ?? UIImage()
     
     // MARK: Image Retrieval and Storage
     internal static func getImage(from url: String, completion: @escaping (UIImage) -> ()) {
