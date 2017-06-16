@@ -130,13 +130,13 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: Utility
-    internal func urlForCell(at row: Int) -> String? {
+    private func urlForCell(at row: Int) -> String? {
         let selectedStory = stories[row]
         selectedRow = nil
         return selectedStory.storyURL
     }
     
-    internal func refreshStoryTable() {
+    private func refreshStoryTable() {
         NewsStore.updateSharedStore(completion: { (newStories) in
             NewsStore.needsRefresh = false
             OperationQueue.main.addOperation {
@@ -146,7 +146,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         })
     }
     
-    internal func searchCellFor(tableView: UITableView, indexPath: IndexPath) -> SearchCell {
+    private func searchCellFor(tableView: UITableView, indexPath: IndexPath) -> SearchCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchCell else { return SearchCell() }
         
         cell.delegate = self
@@ -154,7 +154,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    internal func headlineCellFor(tableView: UITableView, indexPath: IndexPath) -> HeadlineCell {
+    private func headlineCellFor(tableView: UITableView, indexPath: IndexPath) -> HeadlineCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "headlineCell", for: indexPath) as? HeadlineCell else { return HeadlineCell() }
         let story = filteredStories[indexPath.row]
         
@@ -169,7 +169,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: More Options
-    internal func displayMoreOptions(for url: String) {        
+    private func displayMoreOptions(for url: String) {
         let actionSheet = UIAlertController(title: nil, message: "Share this article on", preferredStyle: .actionSheet)
         let shareToFacebookAction = UIAlertAction(title: "Facebook", style: .default) { (alertAction) in
             self.shareToFacebook(url: url)
@@ -186,7 +186,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         present(actionSheet, animated: true, completion: nil)
     }
     
-    internal func openBrowser(url: String) {
+    private func openBrowser(url: String) {
         guard let validURL = URL(string: url) else { return }
         
         UIApplication.shared.open(validURL, options: [:]) { (success) in
@@ -198,7 +198,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    internal func shareToFacebook(url: String) {
+    private func shareToFacebook(url: String) {
         guard let validURL = URL(string: url) else { return }
         
         let socialController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
@@ -207,7 +207,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         present(socialController, animated: true) { }
     }
     
-    internal func shareToTwitter(url: String) {
+    private func shareToTwitter(url: String) {
         guard let validURL = URL(string: url) else { return }
         
         let socialController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
