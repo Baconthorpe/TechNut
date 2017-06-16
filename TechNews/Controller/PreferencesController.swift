@@ -29,10 +29,11 @@ class PreferencesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let sourceNames = Array(sources.keys)
         let source = sourceNames[indexPath.row]
+        let naturalizedSource = Story.naturalized(source: source)
         let status = sources[source] ?? false
         
         cell.delegate = self
-        cell.nameLabel.text = source
+        cell.nameLabel.text = naturalizedSource
         cell.sourceSwitch.setOn(status, animated: false)
         cell.panelView.layer.cornerRadius = 5.0
         cell.sourceSwitch.tintColor = tnTeal

@@ -18,8 +18,12 @@ internal struct Story {
     
     public var sourceNatural: String {
         get {
-            return source.replacingOccurrences(of: "-", with: " ")
+            return Story.naturalized(source: source)
         }
+    }
+    
+    public static func naturalized(source: String) -> String {
+        return source.replacingOccurrences(of: "-", with: " ")
     }
 }
 

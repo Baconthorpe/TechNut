@@ -61,7 +61,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 80
+            return 110
         } else if indexPath.section == 1 {
             return 110
         }
@@ -268,14 +268,6 @@ class HeadlineCell: UITableViewCell {
             self.thumbnailView.image = image
         }
     }
-    
-    // MARK: Debugging
-    var section: Int?
-    var row: Int?
-    
-    internal func report() {
-        print("CELL REPORT: \(section!):\(row!) \(sourceLabel.text!) - \(headlineLabel.text!)")
-    }
 }
 
 protocol HeadlineCellDelegate {
@@ -300,6 +292,28 @@ class SearchCell : UITableViewCell, UISearchBarDelegate {
         } else {
             presentDelegate.newSearch(cell: self, query: presentText)
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(false)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        if let presentDelegate = delegate {
+            presentDelegate.searchCleared(cell: self)
+        }
+        
+        searchBar.endEditing(false)
     }
 }
 

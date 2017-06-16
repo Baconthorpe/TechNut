@@ -20,23 +20,23 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JT1-kb-y5G">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="60" id="TW6-Eu-ED5" customClass="SearchCell" customModule="TechNut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="110" id="TW6-Eu-ED5" customClass="SearchCell" customModule="TechNut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TW6-Eu-ED5" id="GdN-wC-dzL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <searchBar opaque="NO" contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-W3-VBY">
-                                                    <rect key="frame" x="8" y="8" width="359" height="44"/>
+                                                    <rect key="frame" x="8" y="58" width="359" height="44"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="pFN-Oh-dMz"/>
@@ -46,11 +46,23 @@
                                                         <outlet property="delegate" destination="TW6-Eu-ED5" id="87E-rO-5ez"/>
                                                     </connections>
                                                 </searchBar>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TechNut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irB-Xa-HeO">
+                                                    <rect key="frame" x="16" y="16" width="351" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="tDm-mS-WHC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="LZ4-W3-VBY" secondAttribute="trailing" constant="8" id="5GI-Yo-n0C"/>
-                                                <constraint firstItem="LZ4-W3-VBY" firstAttribute="centerY" secondItem="GdN-wC-dzL" secondAttribute="centerY" id="6K6-wd-8ng"/>
+                                                <constraint firstItem="irB-Xa-HeO" firstAttribute="top" secondItem="GdN-wC-dzL" secondAttribute="top" constant="16" id="EI8-L7-AWK"/>
+                                                <constraint firstAttribute="trailing" secondItem="irB-Xa-HeO" secondAttribute="trailing" constant="8" id="StS-2O-4B6"/>
+                                                <constraint firstAttribute="bottom" secondItem="LZ4-W3-VBY" secondAttribute="bottom" constant="8" id="VGH-tV-NTw"/>
                                                 <constraint firstItem="LZ4-W3-VBY" firstAttribute="leading" secondItem="GdN-wC-dzL" secondAttribute="leading" constant="8" id="WIe-DO-UP4"/>
+                                                <constraint firstItem="irB-Xa-HeO" firstAttribute="leading" secondItem="GdN-wC-dzL" secondAttribute="leading" constant="16" id="Y6T-kL-71o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -59,7 +71,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="120" id="Hg3-HJ-djD" customClass="HeadlineCell" customModule="TechNut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="138" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg3-HJ-djD" id="8Qb-9e-OiT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -149,55 +161,15 @@
                             <constraint firstAttribute="trailing" secondItem="JT1-kb-y5G" secondAttribute="trailing" id="uCP-w7-5OQ"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="News" image="news_tab" id="eL9-dg-l8O"/>
                     <navigationItem key="navigationItem" title="TechNut" id="53D-CP-WPG"/>
                     <connections>
                         <outlet property="storyTable" destination="JT1-kb-y5G" id="cp4-6A-gfL"/>
-                        <segue destination="MZ3-pt-gDE" kind="show" identifier="frontPageToWeb" id="HyJ-eu-uP9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="137.18140929535232"/>
-        </scene>
-        <!--Web Controller-->
-        <scene sceneID="FnV-tV-7ua">
-            <objects>
-                <viewController id="MZ3-pt-gDE" customClass="WebController" customModule="TechNut" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kjj-7u-tKm"/>
-                        <viewControllerLayoutGuide type="bottom" id="IJl-BX-2vD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QJe-Ee-sV2">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqo-II-STg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wqo-II-STg" firstAttribute="leading" secondItem="QJe-Ee-sV2" secondAttribute="leading" id="0sV-fi-5p4"/>
-                            <constraint firstItem="wqo-II-STg" firstAttribute="top" secondItem="kjj-7u-tKm" secondAttribute="bottom" id="TC8-7o-1vz"/>
-                            <constraint firstAttribute="bottom" secondItem="wqo-II-STg" secondAttribute="bottom" id="tAa-zw-KFa"/>
-                            <constraint firstAttribute="trailing" secondItem="wqo-II-STg" secondAttribute="trailing" id="z9X-fU-Omx"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Wst-RF-MGd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="30k-zP-m5l">
-                            <connections>
-                                <action selector="openInBrowserTapped:" destination="MZ3-pt-gDE" id="kOU-BS-Vtn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="webView" destination="wqo-II-STg" id="JiA-rg-5Wt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uY3-aW-E2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2888.8000000000002" y="136.28185907046478"/>
+            <point key="canvasLocation" x="1076" y="137"/>
         </scene>
         <!--Welcome Controller-->
         <scene sceneID="gOs-P0-nfX">
@@ -284,27 +256,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTl-8F-eh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-863.20000000000005" y="136.28185907046478"/>
-        </scene>
-        <!--News-->
-        <scene sceneID="GT9-PT-dIz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jph-BA-iOl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="news_tab" id="UPu-Ng-eL6"/>
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Roy-Zr-45d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2Nf-hk-V5e"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RRw-y1-USv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="X4Z-Jc-Gnq">
@@ -432,7 +383,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jph-BA-iOl" kind="relationship" relationship="viewControllers" id="qiz-pY-FVS"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wya-ph-zeD"/>
                         <segue destination="O74-br-9bf" kind="relationship" relationship="viewControllers" id="hFa-Zy-qur"/>
                     </connections>
                 </tabBarController>
