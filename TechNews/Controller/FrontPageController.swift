@@ -223,11 +223,24 @@ class HeadlineCell: UITableViewCell {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var panelView: UIView!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     // MARK: UI Actions
     @IBAction func moreOptionsTapped(_ sender: Any) {
         if let presentDelegate = privateDelegate {
             presentDelegate.moreOptionsRequested(cell: self)
+        }
+    }
+    @IBAction func bookmarkButtonTapped(_ sender: Any) {
+        guard let bookmarkButtonImageView = bookmarkButton.imageView else { return }
+        if !bookmarkOn {
+            bookmarkOn = true
+            bookmarkButtonImageView.image = UIImage(named: "bookmark_teal_icon-1")
+            bookmarkButton.alpha = 1.0
+        } else {
+            bookmarkOn = false
+            bookmarkButtonImageView.image = UIImage(named: "bookmark_black_icon-1")
+            bookmarkButton.alpha = 0.3
         }
     }
     
@@ -245,6 +258,9 @@ class HeadlineCell: UITableViewCell {
         }
     }
     private var privateDelegate: HeadlineCellDelegate?
+    
+    // MARK: Bookmark Properties
+    private var bookmarkOn: Bool = false
     
     // MARK: User Interaction
     func addTapRecognizer() {

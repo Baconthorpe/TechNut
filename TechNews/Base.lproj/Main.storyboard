@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dyE-wI-Gcd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dyE-wI-Gcd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,19 +81,19 @@
                                                     <rect key="frame" x="15" y="5" width="345" height="110"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_thumbnail-1" translatesAutoresizingMaskIntoConstraints="NO" id="pud-dx-s9i">
-                                                            <rect key="frame" x="15" y="10" width="99.5" height="66"/>
+                                                            <rect key="frame" x="15" y="10" width="99" height="65.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="pud-dx-s9i" secondAttribute="height" multiplier="3:2" id="S9B-0R-e3s"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-hg-eby">
-                                                            <rect key="frame" x="15" y="81" width="100" height="19"/>
+                                                            <rect key="frame" x="15" y="80.5" width="99.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Zx-cgG">
-                                                            <rect key="frame" x="130" y="10" width="182" height="90"/>
+                                                            <rect key="frame" x="129.5" y="10" width="182.5" height="90"/>
                                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -104,14 +104,26 @@
                                                                 <constraint firstAttribute="width" constant="25" id="CTq-yr-cgO"/>
                                                                 <constraint firstAttribute="height" constant="25" id="JV8-UA-YBY"/>
                                                             </constraints>
-                                                            <state key="normal" image="more_options_icon-1"/>
+                                                            <state key="normal" image="share_icon-1"/>
                                                             <connections>
                                                                 <action selector="moreOptionsTapped:" destination="Hg3-HJ-djD" eventType="touchUpInside" id="rP4-7F-CrJ"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDC-bW-vaf">
+                                                            <rect key="frame" x="317" y="75" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="BIo-AK-k7w"/>
+                                                                <constraint firstAttribute="height" constant="25" id="Ibb-JD-zXe"/>
+                                                            </constraints>
+                                                            <state key="normal" image="bookmark_black_icon-1"/>
+                                                            <connections>
+                                                                <action selector="bookmarkButtonTapped:" destination="Hg3-HJ-djD" eventType="touchUpInside" id="j1I-oR-9m0"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="0.99922511479999998" blue="0.97948343770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="NDC-bW-vaf" secondAttribute="bottom" constant="10" id="1n6-2d-gZ2"/>
                                                         <constraint firstItem="yLL-Zx-cgG" firstAttribute="top" secondItem="bO1-EK-mEx" secondAttribute="top" constant="10" id="A39-vk-Nas"/>
                                                         <constraint firstItem="yLL-Zx-cgG" firstAttribute="leading" secondItem="Djt-hg-eby" secondAttribute="trailing" constant="15" id="AeR-g6-SpY"/>
                                                         <constraint firstItem="Djt-hg-eby" firstAttribute="width" secondItem="pud-dx-s9i" secondAttribute="width" id="FZI-2E-w9v"/>
@@ -120,6 +132,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="yLL-Zx-cgG" secondAttribute="bottom" constant="10" id="LVM-KO-mpD"/>
                                                         <constraint firstItem="We9-sn-p4m" firstAttribute="top" secondItem="bO1-EK-mEx" secondAttribute="top" constant="10" id="TH5-7a-0uA"/>
                                                         <constraint firstItem="pud-dx-s9i" firstAttribute="height" secondItem="bO1-EK-mEx" secondAttribute="height" multiplier="0.6" id="TXb-Ae-5yK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NDC-bW-vaf" secondAttribute="trailing" constant="3" id="fxL-Mj-BX0"/>
                                                         <constraint firstItem="Djt-hg-eby" firstAttribute="top" secondItem="pud-dx-s9i" secondAttribute="bottom" constant="5" id="iGJ-I3-acy"/>
                                                         <constraint firstAttribute="bottom" secondItem="Djt-hg-eby" secondAttribute="bottom" constant="10" id="lmR-Sh-f2u"/>
                                                         <constraint firstItem="We9-sn-p4m" firstAttribute="leading" secondItem="yLL-Zx-cgG" secondAttribute="trailing" constant="5" id="nEC-jt-Eiw"/>
@@ -140,6 +153,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="NDC-bW-vaf" id="ORt-un-LK4"/>
                                             <outlet property="headlineLabel" destination="yLL-Zx-cgG" id="7hs-GK-dql"/>
                                             <outlet property="panelView" destination="bO1-EK-mEx" id="6Da-df-aor"/>
                                             <outlet property="sourceLabel" destination="Djt-hg-eby" id="oy8-UW-6wk"/>
@@ -169,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="137"/>
+            <point key="canvasLocation" x="1076" y="136.28185907046478"/>
         </scene>
         <!--Welcome Controller-->
         <scene sceneID="gOs-P0-nfX">
@@ -393,9 +407,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark_black_icon-1" width="30" height="30"/>
         <image name="default_thumbnail-1" width="300" height="200"/>
-        <image name="more_options_icon-1" width="30" height="30"/>
         <image name="news_tab" width="25" height="25"/>
         <image name="preferences_tab" width="25" height="25"/>
+        <image name="share_icon-1" width="30" height="30"/>
     </resources>
 </document>
