@@ -93,7 +93,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: Headline Cell
-    func tapOn(cell: HeadlineCell) {
+    func select(cell: HeadlineCell) {
         guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
         guard let url = urlForCell(at: indexPath.row) else { return }
         
@@ -105,6 +105,13 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let url = urlForCell(at: indexPath.row) else { return }
         
         displayMoreOptions(for: url)
+    }
+    
+    func bookmarkTapped(cell: HeadlineCell, on: Bool) {
+        guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
+        
+        let story = stories[indexPath.row]
+        Bookmarks.toggle(bookmark: story)
     }
     
     // MARK: Life Cycle
@@ -161,6 +168,7 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.loadImage(url: story.imageURL)
         cell.sourceLabel.text = story.sourceNatural
         cell.headlineLabel.text = story.headline
+        cell.bookmarkOn = Bookmarks.isStoryBookmarked(storyURL: story.storyURL)
         
         cell.delegate = self
         cell.panelView.layer.cornerRadius = 5.0
@@ -225,27 +233,24 @@ class HeadlineCell: UITableViewCell {
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var bookmarkButton: UIButton!
     
-    // MARK: UI Actions
-    @IBAction func moreOptionsTapped(_ sender: Any) {
-        if let presentDelegate = privateDelegate {
-            presentDelegate.moreOptionsRequested(cell: self)
-        }
-    }
-    @IBAction func bookmarkButtonTapped(_ sender: Any) {
-        guard let bookmarkButtonImageView = bookmarkButton.imageView else { return }
-        if !bookmarkOn {
-            bookmarkOn = true
-            bookmarkButtonImageView.image = UIImage(named: "bookmark_teal_icon-1")
-            bookmarkButton.alpha = 1.0
-        } else {
-            bookmarkOn = false
-            bookmarkButtonImageView.image = UIImage(named: "bookmark_black_icon-1")
-            bookmarkButton.alpha = 0.3
-        }
-    }
-    
     // MARK: Image Loading Properties
     internal var currentImageURL = ""
+    
+    // MARK: Bookmark Properties
+    internal var bookmarkOn: Bool = false {
+        didSet {
+            guard let bookmarkButtonImageView = bookmarkButton.imageView else { return }
+            if bookmarkOn {
+                bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_teal_icon-1")
+                let didRight = bookmarkButtonImageView.image == #imageLiteral(resourceName: "bookmark_teal_icon-1")
+                bookmarkButton.alpha = 1.0
+            } else {
+                bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_black_icon-1")
+                let didRight = bookmarkButtonImageView.image == #imageLiteral(resourceName: "bookmark_black_icon-1")
+                bookmarkButton.alpha = 0.3
+            }
+        }
+    }
     
     // MARK: User Interaction Properties
     internal var delegate: HeadlineCellDelegate? {
@@ -259,8 +264,19 @@ class HeadlineCell: UITableViewCell {
     }
     private var privateDelegate: HeadlineCellDelegate?
     
-    // MARK: Bookmark Properties
-    private var bookmarkOn: Bool = false
+    // MARK: UI Actions
+    @IBAction func moreOptionsTapped(_ sender: Any) {
+        if let presentDelegate = privateDelegate {
+            presentDelegate.moreOptionsRequested(cell: self)
+        }
+    }
+    @IBAction func bookmarkButtonTapped(_ sender: Any) {
+        bookmarkOn = !bookmarkOn
+        
+        if let presentDelegate = delegate {
+            presentDelegate.bookmarkTapped(cell: self, on: bookmarkOn)
+        }
+    }
     
     // MARK: User Interaction
     func addTapRecognizer() {
@@ -271,7 +287,7 @@ class HeadlineCell: UITableViewCell {
     
     func tapped() {
         if let presentDelegate = privateDelegate {
-            presentDelegate.tapOn(cell: self)
+            presentDelegate.select(cell: self)
         }
     }
     
@@ -287,8 +303,9 @@ class HeadlineCell: UITableViewCell {
 }
 
 protocol HeadlineCellDelegate {
-    func tapOn(cell: HeadlineCell)
+    func select(cell: HeadlineCell)
     func moreOptionsRequested(cell: HeadlineCell)
+    func bookmarkTapped(cell: HeadlineCell, on: Bool)
 }
 
 class SearchCell : UITableViewCell, UISearchBarDelegate {

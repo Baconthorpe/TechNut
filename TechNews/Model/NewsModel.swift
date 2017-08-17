@@ -9,6 +9,12 @@
 import Foundation
 
 internal struct Story {
+    public static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return dateFormatter
+    }()
+    
     public let headline: String
     public let blurb: String
     public let source: String
@@ -24,6 +30,35 @@ internal struct Story {
     
     public static func naturalized(source: String) -> String {
         return source.replacingOccurrences(of: "-", with: " ")
+    }
+    
+    public func asDictionary() -> [String : String] {
+        let formattedDate = Story.dateFormatter.string(from: timeOfPublication)
+        
+        return ["headline" : headline,
+                "blurb" : blurb,
+                "source" : source,
+                "storyURL" : storyURL,
+                "imageURL" : imageURL,
+                "timeOfPublication" : formattedDate]
+    }
+    
+    public static func from(dictionary: [String : String]) -> Story? {
+        guard let headline = dictionary["headline"] else { return nil }
+        guard let blurb = dictionary["blurb"] else { return nil }
+        guard let source = dictionary["source"] else { return nil }
+        guard let storyURL = dictionary["storyURL"] else { return nil }
+        guard let imageURL = dictionary["imageURL"] else { return nil }
+        
+        guard let formattedDate = dictionary["timeOfPublication"] else { return nil }
+        guard let parsedDate = Story.dateFormatter.date(from: formattedDate) else { return nil }
+        
+        return Story(headline: headline,
+                     blurb: blurb,
+                     source: source,
+                     storyURL: storyURL,
+                     imageURL: imageURL,
+                     timeOfPublication: parsedDate)
     }
 }
 
