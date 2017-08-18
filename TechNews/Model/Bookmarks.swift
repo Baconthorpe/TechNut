@@ -12,6 +12,9 @@ class Bookmarks {
     // MARK: Static Properties
     private static let bookmarkedStoriesKey = "TechNutBookmarks"
     private static let shared = Bookmarks()
+    internal static var bookmarkedStories: [Story] {
+        return Bookmarks.shared.bookmarkedStories
+    }
     
     // MARK: Instance Properties
     private lazy var bookmarkedStories: [Story] = self.getStoredBookmarks()

@@ -23,19 +23,35 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         set(newStories) {
             allStories = newStories
             filteredStories = allStories
+            bookmarkedStories = Bookmarks.bookmarkedStories
         }
     }
     var filteredStories: [Story] = []
+    var bookmarkedStories: [Story] = []
+    lazy var bookmarksController: Bool = {
+        guard let thisIsTheBookmarksController = self.value(forKey: "bookmarksController") as? Bool else { return false }
+        return thisIsTheBookmarksController
+    }()
+    
+    static var frontPageNeedsBookmarkRefresh = false
+    static var bookmarkPageNeedsBookmarkRefresh = false
     
     // MARK: Selection
     var selectedRow: Int?
     
     // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
+        if bookmarksController {
+            return 1
+        }
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if bookmarksController {
+            return bookmarkedStories.count
+        }
+        
         if section == 0 {
             return 1
         } else if section == 1 {
@@ -46,6 +62,10 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if bookmarksController {
+            return headlineCellFor(tableView: tableView, indexPath: indexPath)
+        }
+        
         if indexPath.section == 0 {
             return searchCellFor(tableView: tableView, indexPath: indexPath)
         } else if indexPath.section == 1 {
@@ -60,6 +80,10 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if bookmarksController {
+            return 110
+        }
+        
         if indexPath.section == 0 {
             return 110
         } else if indexPath.section == 1 {
@@ -110,8 +134,11 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     func bookmarkTapped(cell: HeadlineCell, on: Bool) {
         guard let indexPath = storyTable.indexPathForRow(at: cell.center) else { return }
         
-        let story = stories[indexPath.row]
+        let story = bookmarksController ? bookmarkedStories[indexPath.row] : filteredStories[indexPath.row]
         Bookmarks.toggle(bookmark: story)
+        
+        FrontPageController.frontPageNeedsBookmarkRefresh = true
+        FrontPageController.bookmarkPageNeedsBookmarkRefresh = true
     }
     
     // MARK: Life Cycle
@@ -121,7 +148,8 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if NewsStore.needsRefresh {
+        let bookmarkRefreshNeeded = bookmarksController ? FrontPageController.bookmarkPageNeedsBookmarkRefresh : FrontPageController.frontPageNeedsBookmarkRefresh
+        if bookmarkRefreshNeeded || NewsStore.needsRefresh {
             refreshStoryTable()
         }
     }
@@ -146,6 +174,12 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     private func refreshStoryTable() {
         NewsStore.updateSharedStore(completion: { (newStories) in
             NewsStore.needsRefresh = false
+            if self.bookmarksController {
+                FrontPageController.bookmarkPageNeedsBookmarkRefresh = false
+            } else {
+                FrontPageController.frontPageNeedsBookmarkRefresh = false
+            }
+            
             OperationQueue.main.addOperation {
                 self.stories = newStories
                 self.storyTable.reloadData()
@@ -163,8 +197,15 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private func headlineCellFor(tableView: UITableView, indexPath: IndexPath) -> HeadlineCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "headlineCell", for: indexPath) as? HeadlineCell else { return HeadlineCell() }
-        let story = filteredStories[indexPath.row]
         
+        if bookmarksController {
+            return configureHeadlineCellFor(story: bookmarkedStories[indexPath.row], cell: cell)
+        }
+        
+        return configureHeadlineCellFor(story: filteredStories[indexPath.row], cell: cell)
+    }
+    
+    private func configureHeadlineCellFor(story: Story, cell: HeadlineCell) -> HeadlineCell {
         cell.loadImage(url: story.imageURL)
         cell.sourceLabel.text = story.sourceNatural
         cell.headlineLabel.text = story.headline
@@ -242,11 +283,9 @@ class HeadlineCell: UITableViewCell {
             guard let bookmarkButtonImageView = bookmarkButton.imageView else { return }
             if bookmarkOn {
                 bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_teal_icon-1")
-                let didRight = bookmarkButtonImageView.image == #imageLiteral(resourceName: "bookmark_teal_icon-1")
                 bookmarkButton.alpha = 1.0
             } else {
                 bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_black_icon-1")
-                let didRight = bookmarkButtonImageView.image == #imageLiteral(resourceName: "bookmark_black_icon-1")
                 bookmarkButton.alpha = 0.3
             }
         }
