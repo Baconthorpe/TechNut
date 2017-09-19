@@ -42,14 +42,18 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         if bookmarksController {
-            return 1
+            return 2
         }
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if bookmarksController {
-            return bookmarkedStories.count
+            if section == 0 {
+                return 1
+            } else if section == 1 {
+                return bookmarkedStories.count
+            }
         }
         
         if section == 0 {
@@ -63,7 +67,11 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if bookmarksController {
-            return headlineCellFor(tableView: tableView, indexPath: indexPath)
+            if indexPath.section == 0 {
+                return bookmarkTitleCellFor(tableView: tableView, indexPath: indexPath)
+            } else if indexPath.section == 1 {
+                return headlineCellFor(tableView: tableView, indexPath: indexPath)
+            }
         }
         
         if indexPath.section == 0 {
@@ -81,7 +89,11 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if bookmarksController {
-            return 110
+            if indexPath.section == 0 {
+                return 60
+            } else if indexPath.section == 1 {
+                return 110
+            }
         }
         
         if indexPath.section == 0 {
@@ -195,6 +207,12 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    private func bookmarkTitleCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkTitleCell", for: indexPath) as UITableViewCell
+        
+        return cell
+    }
+    
     private func headlineCellFor(tableView: UITableView, indexPath: IndexPath) -> HeadlineCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "headlineCell", for: indexPath) as? HeadlineCell else { return HeadlineCell() }
         
@@ -274,6 +292,14 @@ class HeadlineCell: UITableViewCell {
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var bookmarkButton: UIButton!
     
+    // MARK: Lazy Images
+    lazy var tealBookmark = {
+        return UIImage(named:"bookmark_teal_icon-1")
+    }()
+    lazy var blackBookmark = {
+        return UIImage(named: "bookmark_black_icon-1")
+    }()
+    
     // MARK: Image Loading Properties
     internal var currentImageURL = ""
     
@@ -282,10 +308,10 @@ class HeadlineCell: UITableViewCell {
         didSet {
             guard let bookmarkButtonImageView = bookmarkButton.imageView else { return }
             if bookmarkOn {
-                bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_teal_icon-1")
+                bookmarkButtonImageView.image = tealBookmark
                 bookmarkButton.alpha = 1.0
             } else {
-                bookmarkButtonImageView.image = #imageLiteral(resourceName: "bookmark_black_icon-1")
+                bookmarkButtonImageView.image = blackBookmark
                 bookmarkButton.alpha = 0.3
             }
         }

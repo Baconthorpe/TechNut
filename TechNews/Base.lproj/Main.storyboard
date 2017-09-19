@@ -406,8 +406,33 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkTitleCell" id="PAz-UI-JfO">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PAz-UI-JfO" id="9aQ-S4-2qH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarked Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YH-hi-tzb">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="yZF-hy-bwB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9YH-hi-tzb" firstAttribute="leading" secondItem="9aQ-S4-2qH" secondAttribute="leading" constant="16" id="1er-Be-RWO"/>
+                                                <constraint firstItem="9YH-hi-tzb" firstAttribute="top" secondItem="9aQ-S4-2qH" secondAttribute="top" constant="8" id="bKp-ye-MX8"/>
+                                                <constraint firstAttribute="trailing" secondItem="9YH-hi-tzb" secondAttribute="trailing" constant="8" id="rLO-RJ-Bq8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headlineCell" rowHeight="120" id="bP6-dT-SRu" customClass="HeadlineCell" customModule="TechNut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bP6-dT-SRu" id="wgd-bm-LcP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -505,7 +530,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.73448076350000002" green="1" blue="0.41212951479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bookmarks" selectedImage="bookmark_black_icon-1" id="uyr-uN-Pvg"/>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark_black_icon-1" id="uyr-uN-Pvg"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="bookmarksController" value="YES"/>
                     </userDefinedRuntimeAttributes>
