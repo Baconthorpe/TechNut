@@ -157,6 +157,9 @@ class FrontPageController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         stories = NewsStore.getSharedStoreStories()
         view.backgroundColor = tnTeal
+        if let tabBarController = tabBarController {
+            tabBarController.tabBar.tintColor = UIColor.black
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
